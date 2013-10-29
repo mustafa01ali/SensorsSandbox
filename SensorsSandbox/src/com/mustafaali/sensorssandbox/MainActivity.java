@@ -137,19 +137,24 @@ public class MainActivity extends Activity {
 			startActivity(new Intent(this, AboutActivity.class));
 			return true;
 		} else if (item.getItemId() == R.id.action_share) {
-			Intent sendIntent = new Intent();
-			sendIntent.setAction(Intent.ACTION_SEND);
-			sendIntent
-					.putExtra(
-							Intent.EXTRA_TEXT,
-							"Check out Sensors Sandbox on Google Play - https://play.google.com/store/apps/details?id=com.ea.game.pvz2_row");
-			sendIntent.setType("text/plain");
-			startActivity(sendIntent);
+			showShareDialog();
 			return true;
 		} else {
 			return super.onOptionsItemSelected(item);
 		}
 
+	}
+
+	private void showShareDialog() {
+		Intent sendIntent = new Intent();
+		sendIntent.setAction(Intent.ACTION_SEND);
+		sendIntent
+				.putExtra(
+						Intent.EXTRA_TEXT,
+						R.string.share_text);
+		sendIntent.setType("text/plain");
+		startActivity(Intent.createChooser(sendIntent, getResources()
+				.getText(R.string.send_to)));
 	}
 
 }

@@ -10,85 +10,108 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-public class MainActivity extends Activity implements SensorEventListener {
-	
-	private SensorManager mSensorManager;
-	private Sensor mSensor;
-	private TextView mListTV;
-	private TextView mDataTV;
-	
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        mListTV = (TextView) findViewById(R.id.sensors_list_tv);
-        mDataTV = (TextView) findViewById(R.id.sensor_data_tc);
-        
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        
-        displaySensorsList();
-        
-        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-    }
+public class MainActivity extends Activity {
 
-    
+	private SensorManager mSensorManager;
+	private List<Sensor> mSensors;
+	private Sensor mSensor;
+
+	private Spinner spinner;
+	private TextView mDataTV;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		initUi();
+
+		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+		displaySensorsList();
+	}
+
+	private void initUi() {
+		spinner = (Spinner) findViewById(R.id.sensors_spinner);
+		spinner.setOnItemSelectedListener(onSpinnerItemSelectedListener);
+		mDataTV = (TextView) findViewById(R.id.sensor_data_tc);
+	}
+
+	private void displaySensorsList() {
+
+		mSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_dropdown_item_1line, android.R.id.text1);
+
+		for (Sensor s : mSensors) {
+			adapter.add(s.getName());
+		}
+
+		spinner.setAdapter(adapter);
+	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		mSensorManager.unregisterListener(this);
+		mSensorManager.unregisterListener(mSensorEventListener);
 	}
-
-
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+		if (null != mSensor)
+			mSensorManager.registerListener(mSensorEventListener, mSensor,
+					SensorManager.SENSOR_DELAY_NORMAL);
 	}
-
-
-
-	private void displaySensorsList() {
-		List<Sensor> list = mSensorManager.getSensorList(Sensor.TYPE_ALL);
-        
-        StringBuilder sb = new StringBuilder();
-        for(Sensor s : list){
-        	sb.append(s.getName());
-        	sb.append("\n");
-        }
-        
-        mListTV.setText(sb);
-	}
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-
 
 	@Override
-	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
 	}
 
+	private OnItemSelectedListener onSpinnerItemSelectedListener = new OnItemSelectedListener() {
 
+		@Override
+		public void onItemSelected(AdapterView<?> parent, View view, int pos,
+				long id) {
+			mSensor = mSensorManager.getDefaultSensor(mSensors.get(pos)
+					.getType());
+			mSensorManager.registerListener(mSensorEventListener, mSensor,
+					SensorManager.SENSOR_DELAY_NORMAL);
+		}
 
-	@Override
-	public void onSensorChanged(SensorEvent event) {
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append("X: " + event.values[0] + "\n");
-		sb.append("Y: " + event.values[1] + "\n");
-		sb.append("Z: " + event.values[2] + "\n");
-		
-		mDataTV.setText(sb);
-	}
-    
+		@Override
+		public void onNothingSelected(AdapterView<?> parent) {
+
+		}
+	};
+
+	private SensorEventListener mSensorEventListener = new SensorEventListener() {
+
+		@Override
+		public void onSensorChanged(SensorEvent event) {
+			StringBuilder sb = new StringBuilder();
+
+			sb.append("X: " + event.values[0] + "\n");
+			sb.append("Y: " + event.values[1] + "\n");
+			sb.append("Z: " + event.values[2] + "\n");
+
+			mDataTV.setText(sb);
+		}
+
+		@Override
+		public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		}
+	};
+
 }

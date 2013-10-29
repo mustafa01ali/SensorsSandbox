@@ -4,12 +4,14 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -24,7 +26,7 @@ public class MainActivity extends Activity {
 	private Sensor mSensor;
 
 	private Spinner spinner;
-	private TextView mDataTV;
+	private TextView dataTextView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class MainActivity extends Activity {
 	private void initUi() {
 		spinner = (Spinner) findViewById(R.id.sensors_spinner);
 		spinner.setOnItemSelectedListener(onSpinnerItemSelectedListener);
-		mDataTV = (TextView) findViewById(R.id.sensor_data_tc);
+		dataTextView = (TextView) findViewById(R.id.sensor_data_tv);
 	}
 
 	private void displaySensorsList() {
@@ -72,13 +74,6 @@ public class MainActivity extends Activity {
 					SensorManager.SENSOR_DELAY_NORMAL);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
 	private OnItemSelectedListener onSpinnerItemSelectedListener = new OnItemSelectedListener() {
 
 		@Override
@@ -106,12 +101,30 @@ public class MainActivity extends Activity {
 			sb.append("Y: " + event.values[1] + "\n");
 			sb.append("Z: " + event.values[2] + "\n");
 
-			mDataTV.setText(sb);
+			dataTextView.setText(sb);
 		}
 
 		@Override
 		public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		}
 	};
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.action_about) {
+			startActivity(new Intent(this, AboutActivity.class));
+			return true;
+		} else {
+			return super.onOptionsItemSelected(item);
+		}
+
+	}
 
 }

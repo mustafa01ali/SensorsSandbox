@@ -17,4 +17,13 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="about_text" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:autoLink">web</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">52dp</item>
+        <item name="android:textSize">@dimen/about_text_size</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
 </resources>

@@ -136,6 +136,16 @@ public class MainActivity extends Activity {
 		if (item.getItemId() == R.id.action_about) {
 			startActivity(new Intent(this, AboutActivity.class));
 			return true;
+		} else if (item.getItemId() == R.id.action_share) {
+			Intent sendIntent = new Intent();
+			sendIntent.setAction(Intent.ACTION_SEND);
+			sendIntent
+					.putExtra(
+							Intent.EXTRA_TEXT,
+							"Check out Sensors Sandbox on Google Play - https://play.google.com/store/apps/details?id=com.ea.game.pvz2_row");
+			sendIntent.setType("text/plain");
+			startActivity(sendIntent);
+			return true;
 		} else {
 			return super.onOptionsItemSelected(item);
 		}

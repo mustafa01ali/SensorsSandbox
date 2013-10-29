@@ -30,6 +30,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.mustafaali.sensorssandbox.MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +39,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.mustafaali.sensorssandbox.AboutActivity">
+            android:name="com.mustafaali.sensorssandbox.AboutActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

@@ -28,12 +28,12 @@
         style="@style/about_text"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Demo application to demonstrate how to use onboard sensors in Android by\nMustafa Ali\nhttps://twitter.com/mustafa01ali" />
+        android:text="@string/about_text" />
 
     <TextView
         android:id="@+id/textView1"
         style="@style/about_text"
         android:layout_below="@+id/textView2"
-        android:text="Source code available at\nhttps://github.com/themvrck/SensorsSandbox"/>
+        android:text="@string/source_code_link"/>
 
 </RelativeLayout>

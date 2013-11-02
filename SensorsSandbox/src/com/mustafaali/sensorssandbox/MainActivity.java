@@ -148,13 +148,12 @@ public class MainActivity extends Activity {
 	private void showShareDialog() {
 		Intent sendIntent = new Intent();
 		sendIntent.setAction(Intent.ACTION_SEND);
-		sendIntent
-				.putExtra(
-						Intent.EXTRA_TEXT,
-						R.string.share_text);
 		sendIntent.setType("text/plain");
-		startActivity(Intent.createChooser(sendIntent, getResources()
-				.getText(R.string.send_to)));
+		sendIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
+		sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text));
+
+		startActivity(Intent.createChooser(sendIntent,
+				getResources().getText(R.string.send_to)));
 	}
 
 }

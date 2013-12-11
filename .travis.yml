@@ -13,7 +13,7 @@ before_install:
   - tar xzf android-sdk_r22.3-linux.tgz
   - export ANDROID_HOME=`pwd`/android-sdk-linux
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-  - android update sdk --all --filter platform-tools,build-tools-18.1.1,android-18,extra-android-support --no-ui --force
+  - echo -ne 'y' | android update sdk --all --filter platform-tools,build-tools-18.1.1,android-18,extra-android-support --no-ui --force
   - echo y
   - cd SensorsSandbox
   

@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
+
 package com.mustafaali.sensorssandbox;
 
 import java.util.List;
@@ -36,124 +37,124 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-	private SensorManager mSensorManager;
-	private List<Sensor> mSensors;
-	private Sensor mSensor;
+    private SensorManager mSensorManager;
+    private List<Sensor> mSensors;
+    private Sensor mSensor;
 
-	private Spinner spinner;
-	private TextView dataTextView;
+    private Spinner spinner;
+    private TextView dataTextView;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-		initUi();
+        initUi();
 
-		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-		displaySensorsList();
-	}
+        displaySensorsList();
+    }
 
-	private void initUi() {
-		spinner = (Spinner) findViewById(R.id.sensors_spinner);
-		spinner.setOnItemSelectedListener(onSpinnerItemSelectedListener);
-		dataTextView = (TextView) findViewById(R.id.sensor_data_tv);
-	}
+    private void initUi() {
+        spinner = (Spinner) findViewById(R.id.sensors_spinner);
+        spinner.setOnItemSelectedListener(onSpinnerItemSelectedListener);
+        dataTextView = (TextView) findViewById(R.id.sensor_data_tv);
+    }
 
-	private void displaySensorsList() {
+    private void displaySensorsList() {
 
-		mSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
+        mSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_dropdown_item_1line, android.R.id.text1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, android.R.id.text1);
 
-		for (Sensor s : mSensors) {
-			adapter.add(s.getName());
-		}
+        for (Sensor s : mSensors) {
+            adapter.add(s.getName());
+        }
 
-		spinner.setAdapter(adapter);
-	}
+        spinner.setAdapter(adapter);
+    }
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		mSensorManager.unregisterListener(mSensorEventListener);
-	}
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mSensorManager.unregisterListener(mSensorEventListener);
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		if (null != mSensor)
-			mSensorManager.registerListener(mSensorEventListener, mSensor,
-					SensorManager.SENSOR_DELAY_NORMAL);
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (null != mSensor)
+            mSensorManager.registerListener(mSensorEventListener, mSensor,
+                    SensorManager.SENSOR_DELAY_NORMAL);
+    }
 
-	private OnItemSelectedListener onSpinnerItemSelectedListener = new OnItemSelectedListener() {
+    private OnItemSelectedListener onSpinnerItemSelectedListener = new OnItemSelectedListener() {
 
-		@Override
-		public void onItemSelected(AdapterView<?> parent, View view, int pos,
-				long id) {
-			mSensor = mSensorManager.getDefaultSensor(mSensors.get(pos)
-					.getType());
-			mSensorManager.registerListener(mSensorEventListener, mSensor,
-					SensorManager.SENSOR_DELAY_NORMAL);
-		}
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int pos,
+                long id) {
+            mSensor = mSensorManager.getDefaultSensor(mSensors.get(pos)
+                    .getType());
+            mSensorManager.registerListener(mSensorEventListener, mSensor,
+                    SensorManager.SENSOR_DELAY_NORMAL);
+        }
 
-		@Override
-		public void onNothingSelected(AdapterView<?> parent) {
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
 
-		}
-	};
+        }
+    };
 
-	private SensorEventListener mSensorEventListener = new SensorEventListener() {
+    private SensorEventListener mSensorEventListener = new SensorEventListener() {
 
-		@Override
-		public void onSensorChanged(SensorEvent event) {
-			StringBuilder sb = new StringBuilder();
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            StringBuilder sb = new StringBuilder();
 
-			sb.append("X: " + event.values[0] + "\n");
-			sb.append("Y: " + event.values[1] + "\n");
-			sb.append("Z: " + event.values[2] + "\n");
+            for (int i = 0; i < event.values.length; i++) {
+                sb.append("values[" + i + "] : " + event.values[i] + "\n");
+            }
 
-			dataTextView.setText(sb);
-		}
+            dataTextView.setText(sb);
+        }
 
-		@Override
-		public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		}
-	};
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    };
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == R.id.action_about) {
-			startActivity(new Intent(this, AboutActivity.class));
-			return true;
-		} else if (item.getItemId() == R.id.action_share) {
-			showShareDialog();
-			return true;
-		} else {
-			return super.onOptionsItemSelected(item);
-		}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_about) {
+            startActivity(new Intent(this, AboutActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.action_share) {
+            showShareDialog();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
 
-	}
+    }
 
-	private void showShareDialog() {
-		Intent sendIntent = new Intent();
-		sendIntent.setAction(Intent.ACTION_SEND);
-		sendIntent.setType("text/plain");
-		sendIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-		sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text));
+    private void showShareDialog() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
+        sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text));
 
-		startActivity(Intent.createChooser(sendIntent,
-				getResources().getText(R.string.send_to)));
-	}
+        startActivity(Intent.createChooser(sendIntent,
+                getResources().getText(R.string.send_to)));
+    }
 
 }

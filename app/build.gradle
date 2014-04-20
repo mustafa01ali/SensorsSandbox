@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.9.1'
+    }
+}
+apply plugin: 'android'
+
+project.archivesBaseName = 'com.mustafaali.sensorssandbox'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '19.0.3'
+
+    defaultConfig {
+        packageName 'com.mustafaali.sensorssandbox'
+        versionCode 5
+        versionName '1.5'
+        minSdkVersion 9
+        targetSdkVersion 19
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:19.0.0'
+}

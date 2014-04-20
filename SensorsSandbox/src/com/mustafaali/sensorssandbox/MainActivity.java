@@ -114,6 +114,9 @@ public class MainActivity extends Activity {
 
             displaySensorInfo();
 
+            mSensorManager.unregisterListener(mSensorEventListener);
+            dataTextView.setText(R.string.msg_waiting_for_data);
+
             mSensorManager.registerListener(mSensorEventListener, mSensor,
                     SensorManager.SENSOR_DELAY_NORMAL);
         }

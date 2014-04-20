@@ -101,7 +101,7 @@ public class MainActivity extends Activity {
         super.onResume();
         if (null != mSensor)
             mSensorManager.registerListener(mSensorEventListener, mSensor,
-                    SensorManager.SENSOR_DELAY_NORMAL);
+                    SensorManager.SENSOR_DELAY_UI);
     }
 
     private OnItemSelectedListener onSpinnerItemSelectedListener = new OnItemSelectedListener() {

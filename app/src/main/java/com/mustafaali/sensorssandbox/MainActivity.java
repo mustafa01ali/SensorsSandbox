@@ -16,8 +16,6 @@
 
 package com.mustafaali.sensorssandbox;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +32,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.List;
 
 public class MainActivity extends Activity {
 

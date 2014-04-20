@@ -15,28 +15,91 @@
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    style="@style/match"
     tools:context=".MainActivity" >
 
     <Spinner
         android:id="@+id/sensors_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/block"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/sensor_data_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="TextView"
-        android:layout_centerVertical="true"
-        android:textSize="@dimen/data_text_size"/>
+    <ScrollView
+        style="@style/block"
+        android:layout_below="@+id/sensors_spinner" >
+
+        <LinearLayout
+            style="@style/block"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_vendor" />
+
+            <TextView
+                android:id="@+id/vendor_name_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_version" />
+
+            <TextView
+                android:id="@+id/version_tv"
+                style="@style/data" />
+            
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_type" />
+
+            <TextView
+                android:id="@+id/type_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_maximum_range" />
+
+            <TextView
+                android:id="@+id/max_range_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_minimum_delay" />
+
+            <TextView
+                android:id="@+id/min_delay_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_resolution" />
+
+            <TextView
+                android:id="@+id/resolution_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_power_consumption" />
+
+            <TextView
+                android:id="@+id/power_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_live_data" />
+
+            <TextView
+                android:id="@+id/sensor_data_tv"
+                style="@style/data" />
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

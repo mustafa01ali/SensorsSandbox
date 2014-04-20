@@ -42,6 +42,13 @@ public class MainActivity extends Activity {
     private Sensor mSensor;
 
     private Spinner spinner;
+    private TextView vendorTextView;
+    private TextView versionTextView;
+    private TextView typeTextView;
+    private TextView maxRangeTextView;
+    private TextView minDelayTextView;
+    private TextView resolutionTextView;
+    private TextView powerTextView;
     private TextView dataTextView;
 
     @Override
@@ -59,6 +66,13 @@ public class MainActivity extends Activity {
     private void initUi() {
         spinner = (Spinner) findViewById(R.id.sensors_spinner);
         spinner.setOnItemSelectedListener(onSpinnerItemSelectedListener);
+        vendorTextView = (TextView) findViewById(R.id.vendor_name_tv);
+        versionTextView = (TextView) findViewById(R.id.version_tv);
+        typeTextView = (TextView) findViewById(R.id.type_tv);
+        maxRangeTextView = (TextView) findViewById(R.id.max_range_tv);
+        minDelayTextView = (TextView) findViewById(R.id.min_delay_tv);
+        resolutionTextView = (TextView) findViewById(R.id.resolution_tv);
+        powerTextView = (TextView) findViewById(R.id.power_tv);
         dataTextView = (TextView) findViewById(R.id.sensor_data_tv);
     }
 
@@ -67,7 +81,7 @@ public class MainActivity extends Activity {
         mSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, android.R.id.text1);
+                android.R.layout.simple_spinner_dropdown_item, android.R.id.text1);
 
         for (Sensor s : mSensors) {
             adapter.add(s.getName());
@@ -97,6 +111,9 @@ public class MainActivity extends Activity {
                 long id) {
             mSensor = mSensorManager.getDefaultSensor(mSensors.get(pos)
                     .getType());
+
+            displaySensorInfo();
+
             mSensorManager.registerListener(mSensorEventListener, mSensor,
                     SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -127,7 +144,6 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -155,6 +171,16 @@ public class MainActivity extends Activity {
 
         startActivity(Intent.createChooser(sendIntent,
                 getResources().getText(R.string.send_to)));
+    }
+
+    private void displaySensorInfo() {
+        vendorTextView.setText(mSensor.getVendor());
+        versionTextView.setText(String.valueOf(mSensor.getVersion()));
+        typeTextView.setText(String.valueOf(mSensor.getType()));
+        maxRangeTextView.setText(String.valueOf(mSensor.getMaximumRange()));
+        minDelayTextView.setText(String.valueOf(mSensor.getMinDelay()) + " micro seconds");
+        resolutionTextView.setText(String.valueOf(mSensor.getResolution()));
+        powerTextView.setText(String.valueOf(mSensor.getPower()) + " mA");
     }
 
 }

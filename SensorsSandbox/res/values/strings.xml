@@ -26,5 +26,13 @@
     <string name="share_text">Check out Sensors Sandbox on Google Play - https://play.google.com/store/apps/details?id=com.mustafaali.sensorssandbox</string>
     <string name="about_text">Demo application to demonstrate how to use onboard sensors in Android by\nMustafa Ali\nhttps://twitter.com/mustafa01ali</string>
     <string name="source_code_link">Source code available at\nhttps://github.com/themvrck/SensorsSandbox</string>
+    <string name="title_vendor">Vendor</string>
+    <string name="title_version">Version</string>
+    <string name="title_maximum_range">Maximum Range</string>
+    <string name="title_minimum_delay">Minimum Delay</string>
+    <string name="title_resolution">Resolution</string>
+    <string name="title_power_consumption">Power Consumption</string>
+    <string name="title_live_data">Live Data</string>
+    <string name="title_type">Type</string>
 
 </resources>

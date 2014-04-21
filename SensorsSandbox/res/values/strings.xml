@@ -34,5 +34,5 @@
     <string name="title_power_consumption">Power Consumption</string>
     <string name="title_live_data">Live Data</string>
     <string name="title_type">Type</string>
-
+    <string name="msg_waiting_for_data">Waiting for data&#8230;</string>
 </resources>

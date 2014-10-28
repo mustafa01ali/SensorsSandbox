@@ -58,9 +58,11 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="spinnerStyle" parent="@android:style/Widget.Holo.Light.Spinner">
+        <!--<item name="android:textAppearance">@android:style/TextAppearance.Large</item>-->
+    </style>
+
     <style name="spinnerItemStyle">
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
         <item name="android:textSize">18sp</item>
@@ -68,10 +70,10 @@
     </style>
 
     <style name="spinnerDropDownItemStyle">
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">7dp</item>
+        <item name="android:paddingRight">7dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
         <item name="android:textSize">18sp</item>
     </style>
 </resources>

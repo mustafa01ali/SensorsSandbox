@@ -1,0 +1,105 @@
+<!--
+  Copyright 2013 Mustafa Ali
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+    http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    style="@style/match"
+    tools:context=".MainActivity" >
+
+    <Spinner
+        android:id="@+id/sensors_spinner"
+        style="@style/block"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ScrollView
+        style="@style/block"
+        android:layout_below="@+id/sensors_spinner" >
+
+        <LinearLayout
+            style="@style/block"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_vendor" />
+
+            <TextView
+                android:id="@+id/vendor_name_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_version" />
+
+            <TextView
+                android:id="@+id/version_tv"
+                style="@style/data" />
+            
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_type" />
+
+            <TextView
+                android:id="@+id/type_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_maximum_range" />
+
+            <TextView
+                android:id="@+id/max_range_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_minimum_delay" />
+
+            <TextView
+                android:id="@+id/min_delay_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_resolution" />
+
+            <TextView
+                android:id="@+id/resolution_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_power_consumption" />
+
+            <TextView
+                android:id="@+id/power_tv"
+                style="@style/data" />
+
+            <TextView
+                style="@style/labelStyle"
+                android:text="@string/title_live_data" />
+
+            <TextView
+                android:id="@+id/sensor_data_tv"
+                style="@style/data" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

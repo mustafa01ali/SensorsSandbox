@@ -22,7 +22,7 @@
 
     <Spinner
         android:id="@+id/sensors_spinner"
-        style="@style/spinnerStyle"
+        style="@android:style/Widget.Holo.Light.Spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

@@ -53,7 +53,25 @@
         <item name="android:textStyle">bold</item>
         <item name="android:paddingTop">5dp</item>
     </style>
+
     <style name="data" parent="@style/wrap">
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="spinnerItemStyle">
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="spinnerDropDownItemStyle">
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 </resources>

@@ -29,7 +29,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -80,15 +79,21 @@ public class MainActivity extends ActionBarActivity {
 
         mSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_dropdown_item, android.R.id.text1);
 
-        for (Sensor s : mSensors) {
-            adapter.add(s.getName());
-        }
+        SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_item, mSensors);
+
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                R.layout.spinner_dropdown_item, R.id.text1);
+
+
+//        for (Sensor s : mSensors) {
+//            adapter.add(s.getName());
+//        }
 
         spinner.setAdapter(adapter);
+        spinner.setSelection(0);
     }
+
 
     @Override
     protected void onPause() {

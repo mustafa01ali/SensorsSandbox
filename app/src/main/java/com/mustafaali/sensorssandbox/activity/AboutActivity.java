@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package com.mustafaali.sensorssandbox;
+package com.mustafaali.sensorssandbox.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+
+import com.mustafaali.sensorssandbox.R;
 
 public class AboutActivity extends ActionBarActivity {
 

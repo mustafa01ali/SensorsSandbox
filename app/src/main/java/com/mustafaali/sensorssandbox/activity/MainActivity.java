@@ -14,7 +14,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.mustafaali.sensorssandbox;
+package com.mustafaali.sensorssandbox.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,6 +31,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.mustafaali.sensorssandbox.R;
+import com.mustafaali.sensorssandbox.adapter.SpinnerAdapter;
 
 import java.util.List;
 
@@ -76,20 +79,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void displaySensorsList() {
-
         mSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
-
-
         SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_item, mSensors);
-
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                R.layout.spinner_dropdown_item, R.id.text1);
-
-
-//        for (Sensor s : mSensors) {
-//            adapter.add(s.getName());
-//        }
-
         spinner.setAdapter(adapter);
         spinner.setSelection(0);
     }

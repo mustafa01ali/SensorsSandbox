@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   Copyright 2013 Mustafa Ali
   
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +14,6 @@
   limitations under the License.
 -->
 <resources>
-
     <string name="app_name">Sensors Sandbox</string>
     <string name="action_about">About</string>
     <string name="action_share">Share</string>
@@ -25,7 +23,7 @@
     <string name="send_to">Send to</string>
     <string name="share_text">Check out Sensors Sandbox on Google Play - https://play.google.com/store/apps/details?id=com.mustafaali.sensorssandbox</string>
     <string name="about_text">Demo application to demonstrate how to use onboard sensors in Android by\nMustafa Ali\nhttps://twitter.com/mustafa01ali</string>
-    <string name="source_code_link">Source code available at\nhttps://github.com/themvrck/SensorsSandbox</string>
+    <string name="source_code_link">Source code available at\nhttps://github.com/mustafa01ali/SensorsSandbox</string>
     <string name="title_vendor">Vendor</string>
     <string name="title_version">Version</string>
     <string name="title_maximum_range">Maximum Range</string>

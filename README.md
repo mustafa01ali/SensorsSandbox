@@ -5,4 +5,7 @@ Android application to demonstrate how to work with onboard sensors in Android. 
 
 ![Alt text](/screenshot.png)
 
-Try it out by downloading from [Google Play](https://play.google.com/store/apps/details?id=com.mustafaali.sensorssandbox)
+<a href="https://play.google.com/store/apps/details?id=com.mustafaali.sensorssandbox">
+  <img alt="Get it on Google Play"
+       src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
+</a>

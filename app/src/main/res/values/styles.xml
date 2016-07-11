@@ -26,7 +26,7 @@
     <style name="about_text" parent="android:Widget.Holo.Light.TextView">
         <item name="android:autoLink">web</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:layout_marginTop">52dp</item>
+        <item name="android:layout_marginTop">@dimen/about_text_marginTop</item>
         <item name="android:textSize">@dimen/about_text_size</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -70,10 +70,10 @@
     </style>
 
     <style name="spinnerDropDownItemStyle">
-        <item name="android:paddingLeft">7dp</item>
-        <item name="android:paddingRight">7dp</item>
-        <item name="android:paddingTop">15dp</item>
-        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/spinner_dropdown_item_text_color</item>
     </style>

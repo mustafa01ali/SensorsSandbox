@@ -7,4 +7,3 @@ android:
     - android-24
 script:s
     - ./gradlew assembleRelease
-

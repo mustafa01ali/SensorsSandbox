@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog bulletedList="true">
+
+  <changelogversion changeDate="July 11, 2016" versionName="1.8">
+    <changelogtext>[b]New![/b] App now works in landscape mode</changelogtext>
+    <changelogtext>[b]New![/b] Added support for Android Nougat's multi-window mode</changelogtext>
+  </changelogversion>
+
+  <changelogversion changeDate="Nov 2, 2014" versionName="1.7">
+    <changelogtext>[b]New![/b] Brand new UI as per Material design</changelogtext>
+  </changelogversion>
+
+</changelog>

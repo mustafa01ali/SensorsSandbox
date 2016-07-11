@@ -21,4 +21,5 @@
   <string name="msg_waiting_for_data">Waiting for data&#8230;</string>
   <string name="value_min_delay">%s μs</string>
   <string name="value_power">%s mA</string>
+  <string name="title_changelog_dialog">Change Log</string>
 </resources>

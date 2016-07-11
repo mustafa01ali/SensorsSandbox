@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import com.mustafaali.sensorssandbox.R;
 import com.mustafaali.sensorssandbox.adapter.SpinnerAdapter;
+import com.mustafaali.sensorssandbox.fragment.ChangeLogDialogFragment;
+import com.mustafaali.sensorssandbox.util.Prefs;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
     initUi();
-
+    if (savedInstanceState == null) { //
+      showChangeLogIfFirstLaunch();
+    }
     sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
     displaySensorsList();
   }
 
@@ -127,6 +129,12 @@ public class MainActivity extends AppCompatActivity {
       return true;
     } else {
       return super.onOptionsItemSelected(item);
+    }
+  }
+
+  private void showChangeLogIfFirstLaunch() {
+    if (Prefs.isFirstLaunch()) {
+      new ChangeLogDialogFragment().show(getFragmentManager(), "change-log-dialog");
     }
   }
 

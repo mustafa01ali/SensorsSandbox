@@ -28,28 +28,28 @@ import java.util.List;
 
 public class SpinnerAdapter extends ArrayAdapter<Sensor> {
 
-  private Context mContext;
-  private List<Sensor> mList;
-  private LayoutInflater mLayoutInflater;
+  private Context context;
+  private List<Sensor> sensorList;
+  private LayoutInflater layoutInflater;
 
   public SpinnerAdapter(Context context, int resource, List<Sensor> objects) {
     super(context, resource, objects);
-    mContext = context;
-    mList = objects;
-    mLayoutInflater = LayoutInflater.from(mContext);
+    this.context = context;
+    sensorList = objects;
+    layoutInflater = LayoutInflater.from(this.context);
   }
 
   @Override public View getView(int position, View convertView, ViewGroup parent) {
     View view = super.getView(position, convertView, parent);
-    ((TextView) view).setText(mList.get(position).getName());
+    ((TextView) view).setText(sensorList.get(position).getName());
     return view;
   }
 
   @Override public View getDropDownView(int position, View convertView, ViewGroup parent) {
     if (convertView == null) {
-      convertView = mLayoutInflater.inflate(R.layout.spinner_dropdown_item, parent, false);
+      convertView = layoutInflater.inflate(R.layout.spinner_dropdown_item, parent, false);
     }
-    ((TextView) convertView).setText(mList.get(position).getName());
+    ((TextView) convertView).setText(sensorList.get(position).getName());
     return convertView;
   }
 }

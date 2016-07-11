@@ -21,9 +21,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-  private SensorManager mSensorManager;
-  private List<Sensor> mSensors;
-  private Sensor mSensor;
+  private SensorManager sensorManager;
+  private List<Sensor> sensorList;
+  private Sensor sensor;
 
   private Spinner spinner;
   private TextView vendorTextView;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     initUi();
 
-    mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+    sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
     displaySensorsList();
   }
@@ -60,35 +60,35 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void displaySensorsList() {
-    mSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
-    SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_item, mSensors);
+    sensorList = sensorManager.getSensorList(Sensor.TYPE_ALL);
+    SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_item, sensorList);
     spinner.setAdapter(adapter);
     spinner.setSelection(0);
   }
 
   @Override protected void onStop() {
     super.onStop();
-    mSensorManager.unregisterListener(mSensorEventListener);
+    sensorManager.unregisterListener(mSensorEventListener);
   }
 
   @Override protected void onStart() {
     super.onStart();
-    if (null != mSensor) {
-      mSensorManager.registerListener(mSensorEventListener, mSensor, SensorManager.SENSOR_DELAY_UI);
+    if (null != sensor) {
+      sensorManager.registerListener(mSensorEventListener, sensor, SensorManager.SENSOR_DELAY_UI);
     }
   }
 
   private OnItemSelectedListener onSpinnerItemSelectedListener = new OnItemSelectedListener() {
 
     @Override public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-      mSensor = mSensorManager.getDefaultSensor(mSensors.get(pos).getType());
+      sensor = sensorManager.getDefaultSensor(sensorList.get(pos).getType());
 
       displaySensorInfo();
 
-      mSensorManager.unregisterListener(mSensorEventListener);
+      sensorManager.unregisterListener(mSensorEventListener);
       dataTextView.setText(R.string.msg_waiting_for_data);
 
-      mSensorManager.registerListener(mSensorEventListener, mSensor,
+      sensorManager.registerListener(mSensorEventListener, sensor,
           SensorManager.SENSOR_DELAY_NORMAL);
     }
 
@@ -141,14 +141,14 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void displaySensorInfo() {
-    vendorTextView.setText(mSensor.getVendor());
-    versionTextView.setText(String.valueOf(mSensor.getVersion()));
-    typeTextView.setText(String.valueOf(mSensor.getType()));
-    maxRangeTextView.setText(String.valueOf(mSensor.getMaximumRange()));
+    vendorTextView.setText(sensor.getVendor());
+    versionTextView.setText(String.valueOf(sensor.getVersion()));
+    typeTextView.setText(String.valueOf(sensor.getType()));
+    maxRangeTextView.setText(String.valueOf(sensor.getMaximumRange()));
     minDelayTextView.setText(
-        String.format(getString(R.string.value_min_delay), String.valueOf(mSensor.getMinDelay())));
-    resolutionTextView.setText(String.valueOf(mSensor.getResolution()));
+        String.format(getString(R.string.value_min_delay), String.valueOf(sensor.getMinDelay())));
+    resolutionTextView.setText(String.valueOf(sensor.getResolution()));
     powerTextView.setText(
-        String.format(getString(R.string.value_power), String.valueOf(mSensor.getPower())));
+        String.format(getString(R.string.value_power), String.valueOf(sensor.getPower())));
   }
 }

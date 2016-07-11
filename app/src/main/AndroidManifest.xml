@@ -20,25 +20,35 @@
     package="com.mustafaali.sensorssandbox">
 
   <uses-sdk
-      android:minSdkVersion="9"
-      android:targetSdkVersion="18"/>
+      android:minSdkVersion="11"
+      android:targetSdkVersion="24"/>
 
   <application
       android:allowBackup="true"
       android:icon="@drawable/ic_launcher"
       android:label="@string/app_name"
+      android:resizeableActivity="true"
       android:theme="@style/AppTheme">
     <activity
         android:name=".activity.MainActivity"
-        android:label="@string/app_name">
+        android:label="@string/app_name"
+        android:supportsPictureInPicture="false">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
-
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
+      <layout
+          android:minHeight="450dp"
+          android:minWidth="300dp"/>
     </activity>
     <activity
-        android:name=".activity.AboutActivity" android:label="@string/action_about"/>
+        android:name=".activity.AboutActivity"
+        android:label="@string/action_about"
+        android:supportsPictureInPicture="false">
+      <layout
+          android:minHeight="450dp"
+          android:minWidth="300dp"/>
+    </activity>
   </application>
 
 </manifest>

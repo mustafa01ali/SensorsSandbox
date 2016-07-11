@@ -18,10 +18,11 @@ import android.widget.TextView;
 import com.mustafaali.sensorssandbox.R;
 import com.mustafaali.sensorssandbox.adapter.SpinnerAdapter;
 import com.mustafaali.sensorssandbox.fragment.ChangeLogDialogFragment;
+import com.mustafaali.sensorssandbox.util.OnDialogDismissedListener;
 import com.mustafaali.sensorssandbox.util.Prefs;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnDialogDismissedListener {
 
   private SensorManager sensorManager;
   private List<Sensor> sensorList;
@@ -37,10 +38,13 @@ public class MainActivity extends AppCompatActivity {
   private TextView powerTextView;
   private TextView dataTextView;
 
+  private Prefs prefs;
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     initUi();
+    prefs = Prefs.getInstance(this);
     if (savedInstanceState == null) { //
       showChangeLogIfFirstLaunch();
     }
@@ -133,19 +137,9 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void showChangeLogIfFirstLaunch() {
-    if (Prefs.isFirstLaunch()) {
-      new ChangeLogDialogFragment().show(getFragmentManager(), "change-log-dialog");
+    if (prefs.shouldShowChangeLog()) {
+      new ChangeLogDialogFragment().show(getFragmentManager(), ChangeLogDialogFragment.TAG);
     }
-  }
-
-  private void showShareDialog() {
-    Intent sendIntent = new Intent();
-    sendIntent.setAction(Intent.ACTION_SEND);
-    sendIntent.setType("text/plain");
-    sendIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-    sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text));
-
-    startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
   }
 
   private void displaySensorInfo() {
@@ -158,5 +152,19 @@ public class MainActivity extends AppCompatActivity {
     resolutionTextView.setText(String.valueOf(sensor.getResolution()));
     powerTextView.setText(
         String.format(getString(R.string.value_power), String.valueOf(sensor.getPower())));
+  }
+
+  private void showShareDialog() {
+    Intent sendIntent = new Intent();
+    sendIntent.setAction(Intent.ACTION_SEND);
+    sendIntent.setType("text/plain");
+    sendIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
+    sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text));
+
+    startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+  }
+
+  @Override public void onDismissed() {
+    prefs.updateLastVersionCode();
   }
 }

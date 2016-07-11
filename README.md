@@ -3,7 +3,9 @@ Sensors Sandbox ![Build status](https://travis-ci.org/mustafa01ali/SensorsSandbo
 
 Android application to demonstrate how to work with on-board sensors in Android. It displays the list of all the available sensors on your device, choosing one of them displays the data measured by the sensor in real-time using the Android SensorManager API.
 
-<img src="/screenshot.png" height="500">
+<br />
+
+<img src="/screenshot.png" height="700">
 
 <br />
 

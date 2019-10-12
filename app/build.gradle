@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 24
-  buildToolsVersion "21.1.2"
+  compileSdkVersion 29
 
   defaultConfig {
     applicationId "com.mustafaali.sensorssandbox"
-    minSdkVersion 11
-    targetSdkVersion 24
+    minSdkVersion 14
+    targetSdkVersion 29
+    versionCode = 9
+    versionName = '1.9'
   }
 
   buildTypes {
@@ -19,6 +20,6 @@ android {
 }
 
 dependencies {
-  compile "com.android.support:appcompat-v7:24.0.0"
-  compile 'com.github.gabrielemariotti.changeloglib:changelog:2.1.0'
+  implementation 'androidx.appcompat:appcompat:1.0.0'
+  implementation 'com.github.gabrielemariotti.changeloglib:changelog:2.1.0'
 }

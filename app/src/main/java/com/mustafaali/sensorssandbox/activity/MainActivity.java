@@ -7,7 +7,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,11 +14,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.mustafaali.sensorssandbox.R;
 import com.mustafaali.sensorssandbox.adapter.SpinnerAdapter;
 import com.mustafaali.sensorssandbox.fragment.ChangeLogDialogFragment;
 import com.mustafaali.sensorssandbox.util.OnDialogDismissedListener;
 import com.mustafaali.sensorssandbox.util.Prefs;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnDialogDismissedListener {
@@ -53,16 +56,16 @@ public class MainActivity extends AppCompatActivity implements OnDialogDismissed
   }
 
   private void initUi() {
-    spinner = (Spinner) findViewById(R.id.sensors_spinner);
+    spinner = findViewById(R.id.sensors_spinner);
     spinner.setOnItemSelectedListener(onSpinnerItemSelectedListener);
-    vendorTextView = (TextView) findViewById(R.id.vendor_name_tv);
-    versionTextView = (TextView) findViewById(R.id.version_tv);
-    typeTextView = (TextView) findViewById(R.id.type_tv);
-    maxRangeTextView = (TextView) findViewById(R.id.max_range_tv);
-    minDelayTextView = (TextView) findViewById(R.id.min_delay_tv);
-    resolutionTextView = (TextView) findViewById(R.id.resolution_tv);
-    powerTextView = (TextView) findViewById(R.id.power_tv);
-    dataTextView = (TextView) findViewById(R.id.sensor_data_tv);
+    vendorTextView = findViewById(R.id.vendor_name_tv);
+    versionTextView = findViewById(R.id.version_tv);
+    typeTextView = findViewById(R.id.type_tv);
+    maxRangeTextView = findViewById(R.id.max_range_tv);
+    minDelayTextView = findViewById(R.id.min_delay_tv);
+    resolutionTextView = findViewById(R.id.resolution_tv);
+    powerTextView = findViewById(R.id.power_tv);
+    dataTextView = findViewById(R.id.sensor_data_tv);
   }
 
   private void displaySensorsList() {

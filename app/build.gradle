@@ -7,6 +7,8 @@ android {
     applicationId "com.mustafaali.sensorssandbox"
     minSdkVersion 14
     targetSdkVersion 29
+    versionCode = 9
+    versionName = '1.9'
   }
 
   buildTypes {

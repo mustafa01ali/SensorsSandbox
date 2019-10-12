@@ -6,10 +6,13 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+
+import androidx.appcompat.app.AlertDialog;
+
 import com.mustafaali.sensorssandbox.R;
 import com.mustafaali.sensorssandbox.util.OnDialogDismissedListener;
+
 import it.gmariotti.changelibs.library.view.ChangeLogRecyclerView;
 
 /**

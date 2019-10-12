@@ -7,7 +7,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,11 +14,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.mustafaali.sensorssandbox.R;
 import com.mustafaali.sensorssandbox.adapter.SpinnerAdapter;
 import com.mustafaali.sensorssandbox.fragment.ChangeLogDialogFragment;
 import com.mustafaali.sensorssandbox.util.OnDialogDismissedListener;
 import com.mustafaali.sensorssandbox.util.Prefs;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnDialogDismissedListener {

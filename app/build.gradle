@@ -1,12 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 29
 
   defaultConfig {
     applicationId "com.mustafaali.sensorssandbox"
     minSdkVersion 14
-    targetSdkVersion 29
+    targetSdkVersion 33
     versionCode = 9
     versionName = '1.9'
   }
@@ -17,9 +16,12 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
     }
   }
+  namespace 'com.mustafaali.sensorssandbox'
+  compileSdk 33
+  buildToolsVersion '33.0.1'
 }
 
 dependencies {
-  implementation 'androidx.appcompat:appcompat:1.0.0'
+  implementation 'androidx.appcompat:appcompat:1.6.1'
   implementation 'com.github.gabrielemariotti.changeloglib:changelog:2.1.0'
 }
